@@ -60,6 +60,32 @@ saveBtn.on("click", function () {
   setInfo();
 });
 
-function timeChecker() {
+function timeChecker(hour) {
   var rightNow = moment().format("HH");
+
+  var time = hour.data("index");
+
+  if (time > rightNow) {
+    $(hour).addClass("future");
+  } else if (time == rightNow) {
+    $(hour).addClass("present");
+  } else if (time < rightNow) {
+    $(hour).addClass("past");
+  }
 }
+
+setInterval(() => {
+  displayDate();
+}, 1000);
+
+setInterval(() => {
+  timeChecker(nineAMinput);
+  timeChecker(tenAMinput);
+  timeChecker(elevenAMinput);
+  timeChecker(twelvePMinput);
+  timeChecker(onePMinput);
+  timeChecker(twoPMinput);
+  timeChecker(threePMinput);
+  timeChecker(fourPMinput);
+  timeChecker(fivePMinput);
+}, 1000);
