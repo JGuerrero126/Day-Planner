@@ -1,13 +1,13 @@
 var currentDayEl = $("#currentDay");
-var nineAMinput = $("#9AM");
-var tenAMinput = $("#10AM");
-var elevenAMinput = $("#11AM");
-var twelvePMinput = $("#12PM");
-var onePMinput = $("#1PM");
-var twoPMinput = $("#2PM");
-var threePMinput = $("#3PM");
-var fourPMinput = $("#4PM");
-var fivePMinput = $("#5PM");
+var nineAM = $("#9AM");
+var tenAM = $("#10AM");
+var elevenAM = $("#11AM");
+var twelvePM = $("#12PM");
+var onePM = $("#1PM");
+var twoPM = $("#2PM");
+var threePM = $("#3PM");
+var fourPM = $("#4PM");
+var fivePM = $("#5PM");
 var saveBtn = $(".saveBtn");
 
 function displayDate() {
@@ -16,20 +16,16 @@ function displayDate() {
   currentDayEl.text(rightNow);
 }
 
-setInterval(() => {
-  displayDate();
-}, 1000);
-
 function setInfo() {
-  localStorage.setItem("9AM", nineAMinput.val());
-  localStorage.setItem("10AM", tenAMinput.val());
-  localStorage.setItem("11AM", elevenAMinput.val());
-  localStorage.setItem("12PM", twelvePMinput.val());
-  localStorage.setItem("1PM", onePMinput.val());
-  localStorage.setItem("2PM", twoPMinput.val());
-  localStorage.setItem("3PM", threePMinput.val());
-  localStorage.setItem("4PM", fourPMinput.val());
-  localStorage.setItem("5PM", fivePMinput.val());
+  localStorage.setItem("9AM", nineAM.val());
+  localStorage.setItem("10AM", tenAM.val());
+  localStorage.setItem("11AM", elevenAM.val());
+  localStorage.setItem("12PM", twelvePM.val());
+  localStorage.setItem("1PM", onePM.val());
+  localStorage.setItem("2PM", twoPM.val());
+  localStorage.setItem("3PM", threePM.val());
+  localStorage.setItem("4PM", fourPM.val());
+  localStorage.setItem("5PM", fivePM.val());
 }
 
 function getInfo() {
@@ -43,22 +39,16 @@ function getInfo() {
   var info4p = localStorage.getItem("4PM");
   var info5p = localStorage.getItem("5PM");
 
-  nineAMinput.text(info9a);
-  tenAMinput.text(info10a);
-  elevenAMinput.text(info11a);
-  twelvePMinput.text(info12p);
-  onePMinput.text(info1p);
-  twoPMinput.text(info2p);
-  threePMinput.text(info3p);
-  fourPMinput.text(info4p);
-  fivePMinput.text(info5p);
+  nineAM.text(info9a);
+  tenAM.text(info10a);
+  elevenAM.text(info11a);
+  twelvePM.text(info12p);
+  onePM.text(info1p);
+  twoPM.text(info2p);
+  threePM.text(info3p);
+  fourPM.text(info4p);
+  fivePM.text(info5p);
 }
-
-getInfo();
-
-saveBtn.on("click", function () {
-  setInfo();
-});
 
 function timeChecker(hour) {
   var rightNow = moment().format("HH");
@@ -76,16 +66,32 @@ function timeChecker(hour) {
 
 setInterval(() => {
   displayDate();
-}, 1000);
+}, 60000);
 
 setInterval(() => {
-  timeChecker(nineAMinput);
-  timeChecker(tenAMinput);
-  timeChecker(elevenAMinput);
-  timeChecker(twelvePMinput);
-  timeChecker(onePMinput);
-  timeChecker(twoPMinput);
-  timeChecker(threePMinput);
-  timeChecker(fourPMinput);
-  timeChecker(fivePMinput);
-}, 1000);
+  timeChecker(nineAM);
+  timeChecker(tenAM);
+  timeChecker(elevenAM);
+  timeChecker(twelvePM);
+  timeChecker(onePM);
+  timeChecker(twoPM);
+  timeChecker(threePM);
+  timeChecker(fourPM);
+  timeChecker(fivePM);
+}, 60000);
+
+getInfo();
+displayDate();
+timeChecker(nineAM);
+timeChecker(tenAM);
+timeChecker(elevenAM);
+timeChecker(twelvePM);
+timeChecker(onePM);
+timeChecker(twoPM);
+timeChecker(threePM);
+timeChecker(fourPM);
+timeChecker(fivePM);
+
+saveBtn.on("click", function () {
+  setInfo();
+});
